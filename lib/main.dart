@@ -1,174 +1,114 @@
-// ignore_for_file: unused_import, avoid_web_libraries_in_flutter
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
-import 'dart:html';
-
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
+
+String name = '';
+bool isHiddenPassword = true;
 
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          //backgroundColor: Colors.tealAccent,
-          appBar: AppBar(
-            centerTitle: true,
-            leading: Icon(Icons.arrow_forward),
-            // ignore: prefer_const_constructors
-            title: Text(
-              'Profile',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          body: SafeArea(
-            child: Center(
-              child: Stack(
-                alignment: Alignment.center,
-                fit: StackFit.expand,
-                children: [
-                  Expanded(
-                    child: Image(
-                      image: NetworkImage(
-                          'https://cdn.pixabay.com/photo/2016/10/12/19/50/matrix-1735640_960_720.jpg'),
-                      fit: BoxFit.fill,
+      home: Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Column(children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.close_outlined,
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(25, 180, 25, 10),
-                    height: 420,
-                    width: 320,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey.withOpacity(.4),
+                    Text(
+                      'SignUp',
+                      style: TextStyle(fontSize: 40.0),
                     ),
-                  ),
-                  Positioned(
-                    top: 60,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(80, 0, 80, 80),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white.withOpacity(.01),
-                        radius: 100,
-                        child: Image(
-                          image: NetworkImage(
-                              'https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_960_720.png'),
-                          height: 400,
-                          width: 400,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 260,
-                    child: Text(
-                      'Vuorudemoto Kyo',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(50, 140, 50, 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'contact',
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'Hire',
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'portfolio',
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 80,
-                    margin: EdgeInsets.fromLTRB(45, 390, 45, 30),
-                    padding: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.black),
-                    child: TextField(
+                    Text(
+                      'Login',
                       style: TextStyle(color: Colors.green),
-                      decoration: InputDecoration(
-                          hintText: 'Write something Annonymus',
-                          hintStyle: TextStyle(color: Colors.green),
-                          border: InputBorder.none),
                     ),
-                  ),
-                  Positioned(
-                    top: 510,
-                    right: 50,
-                    child: MaterialButton(
-                      onPressed: () {},
-                      color: Colors.black,
-                      height: 30,
-                      minWidth: 30,
-                      hoverColor: Colors.white,
-                      child: Text(
-                        'send',
-                        style: TextStyle(
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 50, 10, 15),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  // color: Colors.grey.withOpacity(.50),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                      labelText: 'Name', hintText: 'Enter your user name'),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  // color: Colors.grey.withOpacity(.50),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                      labelText: 'Email', hintText: 'Enter your user name'),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  // color: Colors.grey.withOpacity(.50),
+                ),
+                child: TextField(
+                  obscureText: isHiddenPassword,
+                  decoration: InputDecoration(
+                    labelText: 'password',
+                    hintText: 'Enter your paassword',
+                    suffix: MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: isHiddenPassword ? Text('show') : Text('Hide'),
+                    ),
+                  ),
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {},
+                minWidth: 350,
+                color: Colors.green,
+                child: Text(
+                  'Log In',
+                  style: TextStyle(fontSize: 25, color: Colors.white),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {},
+                child: Text(
+                  'forget your fassword?',
+                  style: TextStyle(color: Colors.green),
+                ),
+              ),
+            ]),
           ),
         ),
       ),
