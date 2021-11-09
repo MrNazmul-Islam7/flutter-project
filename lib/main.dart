@@ -1,11 +1,9 @@
-// ignore_for_file: unused_import, avoid_web_libraries_in_flutter
-
-import 'dart:html';
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -15,6 +13,8 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+bool show = true;
+
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
@@ -22,153 +22,171 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          //backgroundColor: Colors.tealAccent,
-          appBar: AppBar(
-            centerTitle: true,
-            leading: Icon(Icons.arrow_forward),
-            // ignore: prefer_const_constructors
-            title: Text(
-              'Profile',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          body: SafeArea(
-            child: Center(
-              child: Stack(
-                alignment: Alignment.center,
-                fit: StackFit.expand,
-                children: [
-                  Expanded(
-                    child: Image(
-                      image: NetworkImage(
-                          'https://cdn.pixabay.com/photo/2016/10/12/19/50/matrix-1735640_960_720.jpg'),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(25, 180, 25, 10),
-                    height: 420,
-                    width: 320,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey.withOpacity(.4),
-                    ),
-                  ),
-                  Positioned(
-                    top: 60,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(80, 0, 80, 80),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white.withOpacity(.01),
-                        radius: 100,
-                        child: Image(
-                          image: NetworkImage(
-                              'https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_960_720.png'),
-                          height: 400,
-                          width: 400,
+          backgroundColor: Colors.grey.shade300,
+          body: Column(
+            children: [
+              // Stack(
+              //   children: [
+              //     Positioned(
+              //       bottom: 0.0,
+              //       child: Container(
+              //         width: 500,
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(160, 140, 160, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 350,
+                      width: 530,
+                      //color: Colors.blue,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                        child: ListTile(
+                          title: Text(
+                            'facebook',
+                            style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w900,
+                                // letterSpacing: 1,
+                                fontFamily: 'Anton',
+                                color: Colors.blue),
+                          ),
+                          subtitle: Text(
+                            'Facebook helps you connect and share with the people in your life.',
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 260,
-                    child: Text(
-                      'Vuorudemoto Kyo',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(50, 140, 50, 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'contact',
-                            style: TextStyle(
-                              color: Colors.green,
+                    Container(
+                      height: 330,
+                      width: 400,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Email address or phone number',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'Hire',
-                            style: TextStyle(
-                              color: Colors.green,
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            child: TextField(
+                              obscureText: show,
+                              decoration: InputDecoration(
+                                hintText: 'Password',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      show = !show;
+                                    });
+                                  },
+                                  icon: Icon(show
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'portfolio',
-                            style: TextStyle(
-                              color: Colors.green,
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            child: MaterialButton(
+                              onPressed: () {},
+                              minWidth: 500,
+                              height: 55,
+                              color: Colors.blue,
+                              child: Text(
+                                'Log In',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            child: MaterialButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Forgotten password?',
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            child: Divider(
+                              thickness: 1.2,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            child: MaterialButton(
+                              onPressed: () {},
+                              minWidth: 210,
+                              height: 55,
+                              color: Colors.green,
+                              child: Text(
+                                'Create new account',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          // SizedBox(
+                          //   height: 10,
+                          // ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: 80,
-                    margin: EdgeInsets.fromLTRB(45, 390, 45, 30),
-                    padding: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.black),
-                    child: TextField(
-                      style: TextStyle(color: Colors.green),
-                      decoration: InputDecoration(
-                          hintText: 'Write something Annonymus',
-                          hintStyle: TextStyle(color: Colors.green),
-                          border: InputBorder.none),
-                    ),
-                  ),
-                  Positioned(
-                    top: 510,
-                    right: 50,
-                    child: MaterialButton(
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(850, 15, 0, 0),
+                child: Row(
+                  children: [
+                    TextButton(
                       onPressed: () {},
-                      color: Colors.black,
-                      height: 30,
-                      minWidth: 30,
-                      hoverColor: Colors.white,
                       child: Text(
-                        'send',
+                        'create a Page',
                         style: TextStyle(
-                          color: Colors.green,
-                        ),
+                            fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                     ),
-                  ),
-                ],
+                    Text('for a celebrity, brand or business.'),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
