@@ -1,10 +1,8 @@
-// ignore_for_file: unused_import, avoid_web_libraries_in_flutter
-
-import 'dart:html';
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-void main() {
+void main(List<String> args) {
   runApp(MyApp());
 }
 
@@ -15,6 +13,10 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+bool _color = true;
+bool show = true;
+bool ok = true;
+
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
@@ -22,152 +24,102 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          //backgroundColor: Colors.tealAccent,
+          backgroundColor: _color ? Colors.blueAccent : Colors.black,
           appBar: AppBar(
-            centerTitle: true,
-            leading: Icon(Icons.arrow_forward),
-            // ignore: prefer_const_constructors
-            title: Text(
-              'Profile',
-              style: TextStyle(
-                color: Colors.white,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _color = !_color;
+                  });
+                },
+                icon: Icon(
+                  _color ? Icons.light_mode : Icons.dark_mode,
+                  color: _color ? Colors.black : Colors.white,
+                ),
               ),
-            ),
+            ],
           ),
-          body: SafeArea(
-            child: Center(
-              child: Stack(
-                alignment: Alignment.center,
-                fit: StackFit.expand,
-                children: [
-                  Expanded(
-                    child: Image(
-                      image: NetworkImage(
-                          'https://cdn.pixabay.com/photo/2016/10/12/19/50/matrix-1735640_960_720.jpg'),
-                      fit: BoxFit.fill,
-                    ),
+          body: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                  child: Text(
+                    'facebook',
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: _color ? Colors.black : Colors.white),
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(25, 180, 25, 10),
-                    height: 420,
-                    width: 320,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey.withOpacity(.4),
-                    ),
-                  ),
-                  Positioned(
-                    top: 60,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(80, 0, 80, 80),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white.withOpacity(.01),
-                        radius: 100,
-                        child: Image(
-                          image: NetworkImage(
-                              'https://cdn.pixabay.com/photo/2019/12/24/15/38/hacker-4717018_960_720.png'),
-                          height: 400,
-                          width: 400,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 260,
-                    child: Text(
-                      'Vuorudemoto Kyo',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(50, 140, 50, 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'contact',
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'Hire',
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          height: 30,
-                          //minWidth: 130,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'portfolio',
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 80,
-                    margin: EdgeInsets.fromLTRB(45, 390, 45, 30),
-                    padding: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.black),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  margin: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Expanded(
                     child: TextField(
-                      style: TextStyle(color: Colors.green),
                       decoration: InputDecoration(
-                          hintText: 'Write something Annonymus',
-                          hintStyle: TextStyle(color: Colors.green),
-                          border: InputBorder.none),
+                          border: InputBorder.none, hintText: 'Email or Phone'),
                     ),
                   ),
-                  Positioned(
-                    top: 510,
-                    right: 50,
-                    child: MaterialButton(
-                      onPressed: () {},
-                      color: Colors.black,
-                      height: 30,
-                      minWidth: 30,
-                      hoverColor: Colors.white,
-                      child: Text(
-                        'send',
-                        style: TextStyle(
-                          color: Colors.green,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  margin: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Expanded(
+                    child: TextField(
+                      obscureText: show,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Password',
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              show = !show;
+                            });
+                          },
+                          icon: Icon(
+                            show
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      ok = !ok;
+                    });
+                  },
+                  child: AnimatedContainer(
+                    padding: EdgeInsets.only(top: 10),
+                    duration: Duration(seconds: 5),
+                    color: _color ? Colors.blue.shade200 : Colors.blue[900],
+                    height: 40,
+                    width: ok ? 600 : 60,
+                    child: ok
+                        ? Text(
+                            'Log in',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          )
+                        : Icon(Icons.check),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
